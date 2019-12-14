@@ -1,0 +1,64 @@
+#check horizontal win
+def check_winner(grid): 
+    for j in range(0,6): 
+        for k in range(0,4):
+           # print(grid[j][k], grid[j][k+1], grid[j][k+2], grid[j][k+3])
+            if grid[j][k] == "X" and grid[j][k+1]=="X" and grid[j][k+2]=="X" and grid[j][k+3]=="X":
+                return "X"
+            if grid[j][k] == "O" and grid[j][k+1]=="O" and grid[j][k+2]=="O" and grid[j][k+3]=="O":
+                return "O"
+#check vertical win
+    for j in range(0,3): 
+        for k in range(0,7):
+           #print(grid[j][k], grid[j+1][k], grid[j+2][k], grid[j+3][k])
+           if grid[j][k]=="X" and grid[j+1][k]=="X" and grid[j+2][k]=="X" and grid[j+3][k]=="X":
+                return "X"
+           if grid[j][k]=="O" and grid[j+1][k]=="O" and grid[j+2][k]=="O" and grid[j+3][k]=="O":
+                return "O"
+            
+ #check diagonal win  
+    for j in range(0,3):
+        for k in range(0,4): 
+            #print(grid[j][k])
+            #print(grid[j][k], grid[j+1][k+1], grid[j+2][k+2], grid[j+3][k+3])
+            if grid[j][k] =="X" and grid[j+1][k+1] =="X" and grid[j+2][k+2]=="X" and grid[j+3][k+3] =="X":
+                return "X"
+            if grid[j][k] =="O" and grid[j+1][k+1] =="O" and grid[j+2][k+2]=="O" and grid[j+3][k+3] =="O":
+                return "O"
+#check diagonal win other direction
+    for j in range(5,3,-1): 
+        for k in range(0,4):
+            #print(grid[j][k], grid[j-1][k+1], grid[j-2][k+2],grid[j-3][k+3])
+            if grid[j][k]=="X" and grid[j-1][k+1]=="X" and grid[j-2][k+2]=="X" and grid[j-3][k+3]=="X":
+                return"X"
+            if grid[j][k]=="O" and grid[j-1][k+1]=="O" and grid[j-2][k+2]=="O" and grid[j-3][k+3]=="O":
+                return"O"
+    
+
+        
+
+
+#connect 4 scenarios
+                                                                        
+xwins = ((None, None, None, None, None, None, None),
+         (None, None, None, None, None, None, None),
+         (None, None, None, None, "X" , None, None),
+         (None, None, None, "X" , "O" , "O", None),
+         (None, "O" , "X" , "X" , "O" , "X", None),
+         ("O" , "X" , "O" , "O" , "O" , "X" , "X"))
+owins = ((None, None, None, None, None, None, None),
+         (None, None, None, None, None, None, None),
+         ("O" , "O" , "O" , "O" , None, None, None),
+         ("O" , "X" , "X" , "X" , None, None, None),
+         ("X" , "X" , "X" , "O" , "X" , None, None),
+         ("X" , "O" , "O" , "O" , "O" , None, None))
+nowins =(("X" , "X" , None, None, None, None, None),
+         ("O" , "X" , None, None, None, None, None),
+         ("O" , "O" , "X" , "O" , None, "O" , "O" ),
+         ("O" , "X" , "X" , "O" , None, "X" , "X" ),
+         ("X" , "X" , "X" , "O" , "X" , "X" , "O" ),
+         ("X" , "O" , "O" , "X" , "O" , "X" , "O" ))
+         
+print(check_winner(xwins))
+print(check_winner(owins))
+print(check_winner(nowins))
